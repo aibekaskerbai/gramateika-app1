@@ -16,8 +16,34 @@
   <!-- FontAwesome Icons -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
   
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans', sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
 </head>
 <body class="p-3 md:p-6">
 
@@ -491,45 +517,6 @@
       Платформа «Грамотейка» &copy; 2026 &bull; Автоматизированный анализ и персонализация заданий по русскому языку
     </footer>
   </div>
-
-  <!-- Firebase Scripts (ES Modules) -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-    import { getFirestore, doc, setDoc, getDoc, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-    const appId = typeof __app_id !== 'undefined' ? __app_id : 'grammar-app-5class';
-    const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
-      apiKey: "",
-      authDomain: "demo.firebaseapp.com",
-      projectId: "demo-project",
-      storageBucket: "demo.appspot.com",
-      messagingSenderId: "123",
-      appId: "123"
-    };
-
-    let app = null, db = null, auth = null;
-
-    try {
-      if (firebaseConfig.apiKey) {
-        app = initializeApp(firebaseConfig);
-        db = getFirestore(app);
-        auth = getAuth(app);
-      }
-    } catch(e) {
-      console.warn("Firebase fallback mode activated.");
-    }
-
-    window.db = db;
-    window.auth = auth;
-    window.appId = appId;
-    window.doc = doc;
-    window.setDoc = setDoc;
-    window.getDoc = getDoc;
-    window.collection = collection;
-    window.addDoc = addDoc;
-    window.getDocs = getDocs;
-  </script>
 
   <!-- Application Logic -->
   <script src="app.js"></script>
